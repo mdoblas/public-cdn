@@ -1,8 +1,9 @@
             jQuery(document).ready(function () {
 
+                var mobile_device = isMobileDevice();
                 var galleryImages = jQuery('.gallery-image');
 
-                if (galleryImages.length > 0 && screen.width >= 768) {
+                if (galleryImages.length > 0 && !mobile_device) {
 
                     jQuery("body").append("<div class='lightbox' style='display: none;'><div class='nav'><button id='prevButton'>&lt;</button><button id='nextButton'>&gt;</button></div><img id='lightboxImage' src='' alt='Imagen ampliada'><span class='close-button' id='closeButton'>×</span></div>");
 
@@ -83,5 +84,29 @@
                         showLightbox(currentIndex);
                     }
 
+                }
+
+                function isMobileDevice() {
+                    if (screen.width <= 767) {
+                        return true;
+                    }
+
+                    const agent = navigator.userAgent.toLowerCase();
+                    const keywordsMovil = ['mobile', 'android', 'iphone', 'ipod', 'blackberry', 'windows phone'];
+                    const keywordsTablet = ['tablet', 'ipad', 'android'];
+
+                    for (let keyword of keywordsMovil) {
+                        if (agent.indexOf(keyword) !== -1) {
+                            return true;
+                        }
+                    }
+
+                    for (let keyword of keywordsTablet) {
+                        if (agent.indexOf(keyword) !== -1) {
+                            return true;
+                        }
+                    }
+
+                    return false;
                 }
             });
