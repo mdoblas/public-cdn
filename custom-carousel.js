@@ -38,22 +38,10 @@
                     }
 
                     // Cambiar a la imagen anterior
-                    jQuery('#prevButton').click(function () {
-                        currentIndex--;
-                        if (currentIndex < 0) {
-                            currentIndex = galleryImages.length - 1;
-                        }
-                        showLightbox(currentIndex);
-                    });
+                    jQuery('#prevButton').click(prevImgCustomCarousel);
 
                     // Cambiar a la siguiente imagen
-                    jQuery('#nextButton').click(function () {
-                        currentIndex++;
-                        if (currentIndex >= galleryImages.length) {
-                            currentIndex = 0;
-                        }
-                        showLightbox(currentIndex);
-                    });
+                    jQuery('#nextButton').click(nextImgCustomCarousel);
 
                     // Cerrar la vista de luz de fondo
                     jQuery('#closeButton').click(function () {
@@ -63,10 +51,37 @@
 
                     //  Event listener para la tecla "Escape"
                     document.addEventListener("keydown", function (event) {
-                        if (event.key === "Escape") {
-                            jQuery('body').removeClass('lock-scroll');
-                            jQuery('.lightbox').css("display", "none");
+                        switch (event.key) {
+                            case "Escape":
+                                jQuery('body').removeClass('lock-scroll');
+                                jQuery('.lightbox').css("display", "none");
+                                break;
+                            case "ArrowRight":
+                                nextImgCustomCarousel();
+                                break;
+                            case "ArrowLeft":
+                                prevImgCustomCarousel();
+                                break;
+                            default:
+                                break;
                         }
                     });
+
+                    function prevImgCustomCarousel() {
+                        currentIndex--;
+                        if (currentIndex < 0) {
+                            currentIndex = galleryImages.length - 1;
+                        }
+                        showLightbox(currentIndex);
+                    }
+
+                    function nextImgCustomCarousel() {
+                        currentIndex++;
+                        if (currentIndex >= galleryImages.length) {
+                            currentIndex = 0;
+                        }
+                        showLightbox(currentIndex);
+                    }
+
                 }
             });
