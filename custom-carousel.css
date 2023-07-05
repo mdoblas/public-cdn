@@ -53,3 +53,9 @@
                     overflow: hidden;
                 }
             }
+
+            @media only all and (max-width: 767px){
+                .gallery-image{
+                    width: 100%;
+                }
+            }
