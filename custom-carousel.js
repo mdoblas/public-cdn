@@ -1,11 +1,10 @@
             jQuery(document).ready(function () {
-
                 var mobile_device = isMobileDevice();
                 var galleryImages = jQuery('.gallery-image');
 
                 if (galleryImages.length > 0 && !mobile_device) {
 
-                    jQuery("body").append("<div class='lightbox' style='display: none;'><div class='nav'><button id='prevButton'>&lt;</button><button id='nextButton'>&gt;</button></div><img id='lightboxImage' src='' alt='Imagen ampliada'><span class='close-button' id='closeButton'>×</span></div>");
+                    jQuery("body").append("<div class='lightbox' style='display: none;'><div class='nav'><button id='prevButton'>&lt;</button><button id='nextButton'>&gt;</button></div><img id='lightboxImage' src='' alt='Imagen ampliada'><p id='lightbox_img_counter'></p><span class='close-button' id='closeButton'>×</span></div>");
 
                     if (galleryImages.length === 1) {
                         jQuery(".lightbox .nav button").css("display", "none");
@@ -34,6 +33,8 @@
                         var currentImage = galleryImages.eq(index);
                         var imageUrl = currentImage.attr('src');
                         lightboxImage.attr('src', imageUrl);
+
+                        jQuery("#lightbox_img_counter").text((index + 1) + "/" + galleryImages.length);
 
                         lightbox.fadeIn();
                     }
