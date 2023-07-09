@@ -52,6 +52,14 @@
                 body.lock-scroll {
                     overflow: hidden;
                 }
+
+                #lightbox_img_counter{
+                    position: absolute;
+                    right: 30px;
+                    bottom: 30px;
+                    color: white;
+                    font-size: 2rem;
+                }
             }
 
             @media only all and (max-width: 767px){
