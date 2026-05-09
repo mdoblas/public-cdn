@@ -1,69 +1,112 @@
-            @media only all and (min-width: 768px){
-                .gallery-image {
-                    cursor: pointer;
-                }
-                .lightbox {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(0, 0, 0, 0.8);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 9999;
-                }
-                .lightbox img {
-                    max-width: 90%;
-                    max-height: 90%;
-                }
-                .lightbox .nav {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 100%;
-                    padding: 0 20px;
-                    box-sizing: border-box;
-                    color: #fff;
-                    font-size: 30px;
-                }
-                .lightbox .nav button {
-                    background: none;
-                    border: none;
-                    color: #999;
-                    font-size: 40px;
-                    cursor: pointer;
-                    box-shadow: none;
-                }
+@media only all and (min-width: 768px){
 
-                .lightbox .close-button {
-                    position: absolute;
-                    top: 30px;
-                    right: 30px;
-                    cursor: pointer;
-                    font-size: 50px;
-                    color: #999;
-                }
+    .gallery-image {
+        cursor: pointer;
+    }
 
-                body.lock-scroll {
-                    overflow: hidden;
-                }
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.88);
 
-                #lightbox_img_counter{
-                    position: absolute;
-                    right: 30px;
-                    bottom: 30px;
-                    color: white;
-                    font-size: 1.5rem;
-                }
-            }
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-            @media only all and (max-width: 767px){
-                .gallery-image{
-                    width: 100%;
-                }
-            }
+        z-index: 999999;
+
+        padding: 40px;
+        box-sizing: border-box;
+    }
+
+    .lightbox img {
+        max-width: calc(100vw - 120px);
+        max-height: calc(100vh - 120px);
+        object-fit: contain;
+    }
+
+    .lightbox .nav {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        right: 0;
+
+        transform: translateY(-50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+
+        padding: 0 20px;
+        box-sizing: border-box;
+
+        pointer-events: none;
+    }
+
+    .lightbox .nav button {
+        background: none;
+        border: none;
+
+        color: #999;
+        font-size: 40px;
+
+        cursor: pointer;
+        box-shadow: none;
+
+        pointer-events: auto;
+
+        transition: color .2s ease;
+    }
+
+    .lightbox .nav button:hover {
+        color: white;
+    }
+
+    .lightbox .close-button {
+        position: fixed;
+
+        top: 18px;
+        right: 24px;
+
+        z-index: 1000001;
+
+        cursor: pointer;
+
+        font-size: 54px;
+        line-height: 1;
+
+        color: #999;
+
+        transition: color .2s ease;
+    }
+
+    .lightbox .close-button:hover {
+        color: white;
+    }
+
+    body.lock-scroll {
+        overflow: hidden;
+    }
+
+    #lightbox_img_counter{
+        position: fixed;
+
+        right: 30px;
+        bottom: 24px;
+
+        color: white;
+        font-size: 1.5rem;
+
+        z-index: 1000001;
+    }
+}
+
+@media only all and (max-width: 767px){
+
+    .gallery-image{
+        width: 100%;
+    }
+
+}
